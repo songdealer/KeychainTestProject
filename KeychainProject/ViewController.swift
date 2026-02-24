@@ -24,7 +24,7 @@ class ViewController: UIViewController {
     @IBAction func findButtonClicked(_ sender: Any) {
         guard let key = keyTextField.text, let data = try? keychainUtils.read(key: key) else { return }
         
-        let ret = String(data: data, encoding: .utf8)
+        guard let ret = String(data: data, encoding: .utf8) else { return }
         
         valueLabel.text = "value: \(ret)"
     }
